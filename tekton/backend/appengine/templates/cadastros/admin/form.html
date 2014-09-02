@@ -1,0 +1,25 @@
+{% extends 'cadastros/base.html' %}
+{% block body %}
+    {% set cadastro=cadastro or None %}
+    {% set errors=errors or None %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <br/>
+
+                <div class="well">
+                    <h1 class="text-center">{% trans %}Cadastro Form{% endtrans %}</h1>
+
+                    <form action="{{ save_path }}" method="post" role="form">
+                        {{ csrf_input() }}
+                        {{ form_input(_('Nome'),'nome',cadastro.nome,errors.nome) }}
+                        {{ form_input(_('Sobrenome'),'sobrenome',cadastro.sobrenome,errors.sobrenome) }}
+                        {{ form_input(_('Email'),'email',cadastro.email,errors.email) }}
+                        <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
