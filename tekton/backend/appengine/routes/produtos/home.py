@@ -18,4 +18,3 @@ def index():
     produto_public_dcts = [public_form.fill_with_model(produto) for produto in produtos]
     context = {'produtos': produto_public_dcts,'admin_path':router.to_path(admin)}
     return TemplateResponse(context)
-
