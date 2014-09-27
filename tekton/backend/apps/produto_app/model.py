@@ -13,7 +13,3 @@ class Produto(Node):
 class AutorArco(Arc):
     origin = ndb.KeyProperty(required=True)
     destination = ndb.KeyProperty(Produto, required=True)
-
-class ProdForm(ModelForm):
-    _model_class = Produto
-    _include = [Produto.nome, Produto.preco, Produto.creation]
