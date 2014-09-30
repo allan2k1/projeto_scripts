@@ -1,12 +1,14 @@
 {% extends 'base/base.html' %}
 {% block body %}
     {% set produto=produto or None %}
-    {% set error=error or None %}
+    {% set erros=erros or None %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-                <h2>Lista of Jogos Cadastrados</h2>
+                <h1>Jogos</h1>
+                <a href="{{ form_path }}" class="btn btn-success">Criar Novo Jogo</a>
+                <hr/>
+                <h2>Lista de Jogos Cadastrados</h2>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -22,10 +24,17 @@
                         <tr>
                             <td><a href="{{ produto.edit_path }}" class="btn btn-success btn-sm"><i
                                     class="glyphicon glyphicon-pencil"></i></a></td>
-                            <td>{{ produto.key.id }}</td>
-                            <td>{{ produto.release }}</td>
+                            <td>{{ produto.id }}</td>
+                            <td>{{ produto.creation }}</td>
                             <td>{{ produto.title }}</td>
                             <td>{{ produto.price }}</td>
+                            <td>
+                                <form action="{{ produto.delete_path }}" method="post" onsubmit="return confirm('{{_('Você tem certeza que deseja excluir esse Jogo?')}}');">
+                                    {{ csrf_input() }}
+                                    <button class="btn btn-danger btn-sm"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
