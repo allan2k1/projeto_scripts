@@ -29,9 +29,13 @@ def index(_logged_user):
     contexto = {'produto_lista': produto_lista, 'form_path':router.to_path(form)}
     return TemplateResponse(contexto)
 
-def delete(produto_id):
+def delete(_logged_user, produto_id):
     chave = ndb.Key(Produto, int(produto_id))
     chave.delete()
+    query = AutorArco.query_by_origin_and_destination(_logged_user, produto_id)
+    autor_arcos = query.fetch()
+    chave_arco = autor_arcos[0]._entity_key
+    chave_arco.delete()
     return RedirectResponse(router.to_path(index))
 
 @no_csrf
