@@ -1,0 +1,86 @@
+{% extends 'clientes/base.html' %}
+
+{% block js %}
+    <script type="application/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/clientes.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <button id="mostrar-form-btn" class="btn btn-success">{% trans %}Cadastrar Novo Cliente{% endtrans %}</button>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                    <br/>
+
+                        <div id="cliente-form" class="well">
+                            <h1 class="text-center">Cadastro de Cliente</h1>
+
+                            <div role="form">
+                                <input type="hidden" value="09ea52b694bf41b34ec7ed52909169c1" name="_csrf_code" xmlns="http://www.w3.org/1999/html"/>
+
+                                <div id="nomeDiv" class="form-group ">
+                                    <label for="nomeInput" class="control-label">Nome </label>
+                                    <input id="nomeInput" type="text" class="form-control" name="nome" value=""/>
+                                    <span id="help-nome" class="help-block"></span>
+                                </div>
+
+                                <div id="cpfDiv" class="form-group ">
+                                    <label for="cpfInput" class="control-label">CPF </label>
+                                    <input id="cpfInput" type="text" class="form-control" name="cpf" value=""/>
+                                    <span id="help-cpf" class="help-block"></span>
+                                </div>
+
+                                <div id="emailDiv" class="form-group ">
+                                    <label for="emailInput" class="control-label">E-mail </label>
+                                    <input id="emailInput" type="text" class="form-control" name="email" value=""/>
+                                    <span id="help-email" class="help-block"></span>
+                                </div>
+
+                                <button id="salvar-btn" class="btn btn-success">Salvar</button>
+                                 <img id="ajax-gif" src="/static/img/ajax.gif" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>{% trans %}Lista de Clientes {% endtrans %}</h1>
+                <hr/>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th/>
+                        <th>{% trans %}Código{% endtrans %}</th>
+                        <th>{% trans %}CPF{% endtrans %}</th>
+                        <th>{% trans %}Nome{% endtrans %}</th>
+                        <th>{% trans %}Email{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td><a href="{{ cliente.edit_path }}" class="btn btn-success btn-sm"><i
+                                    class="glyphicon glyphicon-pencil"></i></a></td>
+                            <td>{{ cliente.id }}</td>
+                            <td>{{ cliente.cpf }}</td>
+                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.email }}</td>
+                            <td>
+                                <form action="{{ cliente.delete_path }}" method="post"
+                                      onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
+                                    {{ csrf_input() }}
+                                    <button class="btn btn-danger btn-sm"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
