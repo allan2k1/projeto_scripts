@@ -1,0 +1,67 @@
+<div class="thumbnail">
+
+<div class="caption">
+
+
+    <table class="table table-striped">
+        <thead>
+            <h3>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+
+
+                <span ng-hide="editandoFlag">{{ cliente.nome }}</span>
+                <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.nome" />
+
+                 <small>{{ cliente.id }}</small>
+
+
+                <button class="btn btn-primary"  ng-click="entrarModoEdicao()" ng-hide="editandoFlag">
+                    <i class="glyphicon glyphicon-pencil"> </i>
+                </button>
+
+                <div ng-show="editandoFlag" style="width: 150px;">
+
+                    <button class="btn btn-warning" ng-click="sairModoEdicao()">
+                        <i class="glyphicon glyphicon-floppy-remove"></i>
+                    </button>
+                    <button class="btn btn-success" ng-click="editar()">
+                        <i class="glyphicon glyphicon-floppy-save"></i>
+                    </button>
+                </div>
+
+            </h3>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>CPF</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.cpf }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.cpf" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>E-mail</strong></td>
+				<td>
+                    <span ng-hide="editandoFlag">{{ cliente.email }}</span>
+                    <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.email" />
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+
+				<td align="right">
+
+                    <button class="btn btn-danger" ng-disabled="apagandoFlag" ng-click="deletar()">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                    <img ng-show="apagandoFlag" src="/static/img/ajax.gif">
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</div>

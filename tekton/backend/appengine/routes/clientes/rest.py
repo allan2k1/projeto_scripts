@@ -13,7 +13,7 @@ def index():
     cliente_list = cmd()
     short_form=facade.cliente_short_form()
     cliente_short = [short_form.fill_with_model(m) for m in cliente_list]
-    return JsonUnsecureResponse(cliente_short)
+    return JsonResponse(cliente_short)
 
 @login_not_required
 @no_csrf
@@ -23,17 +23,16 @@ def save(_resp, **cliente_properties):
 
 @login_not_required
 @no_csrf
-def update(_resp, cliente_id, **cliente_properties):
-    cmd = facade.update_cliente_cmd(cliente_id, **cliente_properties)
+def update(_resp, id, **cliente_properties):
+    cmd = facade.update_cliente_cmd(id, **cliente_properties)
     return _save_or_update_json_response(_resp, cmd)
 
 @login_not_required
 @no_csrf
-def delete(cliente_id):
-    facade.delete_cliente_cmd(cliente_id)()
+def delete(id):
+    facade.delete_cliente_cmd(id)()
 
-@login_not_required
-@no_csrf
+
 def _save_or_update_json_response(_resp, cmd):
     try:
         cliente = cmd()
@@ -41,4 +40,4 @@ def _save_or_update_json_response(_resp, cmd):
         _resp.status_code = 500
         return JsonUnsecureResponse(cmd.errors)
     short_form=facade.cliente_short_form()
-    return JsonUnsecureResponse(short_form.fill_with_model(cliente))
+    return JsonResponse(short_form.fill_with_model(cliente))

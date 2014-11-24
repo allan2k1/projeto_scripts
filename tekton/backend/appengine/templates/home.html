@@ -19,7 +19,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% macro select_tab(tab='') %}
-                    <li {{ 'class=active' if tab=='CADASTROS' }}><a href="/cadastros">{% trans %}Cadastro{% endtrans %}</a></li>
+                    <li {{ 'class=active' if tab=='CLIENTES' }}><a href="/clientes/admin">{% trans %}Cadastro{% endtrans %}</a></li>
                     <li {{ 'class=active' if tab=='PRODUTOS' }}><a href="/produtos">{% trans %}Produto{% endtrans %}</a></li>
                     {% if _logged_user and 'ADMIN' in _logged_user.groups %}
                         <li {{ 'class=active' if tab=='ADMIN' }}><a href="/admin">{% trans %}Admin{% endtrans %}</a></li>
