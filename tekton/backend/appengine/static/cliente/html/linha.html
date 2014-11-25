@@ -14,21 +14,6 @@
 
                  <small>{{ cliente.id }}</small>
 
-
-                <button class="btn btn-primary"  ng-click="entrarModoEdicao()" ng-hide="editandoFlag">
-                    <i class="glyphicon glyphicon-pencil"> </i>
-                </button>
-
-                <div ng-show="editandoFlag" style="width: 150px;">
-
-                    <button class="btn btn-warning" ng-click="sairModoEdicao()">
-                        <i class="glyphicon glyphicon-floppy-remove"></i>
-                    </button>
-                    <button class="btn btn-success" ng-click="editar()">
-                        <i class="glyphicon glyphicon-floppy-save"></i>
-                    </button>
-                </div>
-
             </h3>
         </thead>
         <tbody>
@@ -51,9 +36,27 @@
             <tr>
                 <td> </td>
 
+
 				<td align="right">
 
-                    <button class="btn btn-danger" ng-disabled="apagandoFlag" ng-click="deletar()">
+                    <div ng-show="editandoFlag" style="width: 300px;">
+
+                        <button class="btn btn-warning" ng-click="sairModoEdicao()"> Cancelar
+                            <i class="glyphicon glyphicon-floppy-remove"></i>
+                        </button>
+
+                        <button class="btn btn-success" ng-click="editar()"> Salvar
+                            <i class="glyphicon glyphicon-floppy-save"></i>
+                        </button>
+                    </div>
+
+                    <br>
+
+                    <button class="btn btn-primary"  ng-click="entrarModoEdicao()" ng-hide="editandoFlag"> Editar
+                        <i class="glyphicon glyphicon-pencil"> </i>
+                    </button>
+
+                    <button class="btn btn-danger" ng-disabled="apagandoFlag" ng-click="deletar()"> Excluir
                         <i class="glyphicon glyphicon-trash"></i>
                     </button>
                     <img ng-show="apagandoFlag" src="/static/img/ajax.gif">

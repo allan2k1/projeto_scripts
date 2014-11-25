@@ -5,19 +5,19 @@
 
     <div role="form">
 
-    <div id="cpfDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.cpf!=null]">
-
-        <label for="cpfInput" class="control-label">CPF </label>
-        <input id="cpfInput" type="text" class="form-control" ng-model="cliente.cpf"/>
-        <span id="help-cpf" class="help-block">{{ errors.cpf }}</span>
-
-    </div>
-
     <div id="nomeDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.nome!=null]">
 
         <label for="nomeInput" class="control-label">Nome </label>
         <input id="nomeInput" type="text" class="form-control" ng-model="cliente.nome"/>
         <span id="help-nome" class="help-block">{{ errors.nome }}</span>
+
+    </div>
+
+    <div id="cpfDiv" class="form-group " ng-class="{true:'has-error',false:''}[errors.cpf!=null]">
+
+        <label for="cpfInput" class="control-label">CPF </label>
+        <input id="cpfInput" type="text" class="form-control" ng-model="cliente.cpf"/>
+        <span id="help-cpf" class="help-block">{{ errors.cpf }}</span>
 
     </div>
 

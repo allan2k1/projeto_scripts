@@ -5,17 +5,6 @@
                 ng-hide="editandoFlag">
             <i class="glyphicon glyphicon-pencil"></i>
         </button>
-        <div ng-show="editandoFlag" style="width: 150px;">
-            <button class="btn btn-warning"
-                    ng-click="sairModoEdicao()">
-                <i class="glyphicon glyphicon-floppy-remove"></i>
-            </button>
-            <button class="btn btn-success"
-                    ng-click="editar()">
-                <i class="glyphicon glyphicon-floppy-save"></i>
-            </button>
-            <img ng-show="apagandoFlag" src="/static/img/ajax.gif">
-        </div>
     </td>
     <td>
         <span ng-hide="editandoFlag">{{ cliente.cpf }}</span>
@@ -30,10 +19,24 @@
         <input type="text" ng-show="editandoFlag" ng-model="clienteEdicao.email" />
     </td>
     <td>
+
+        <div ng-show="editandoFlag" style="width: 150px;">
+            <button class="btn btn-warning"
+                    ng-click="sairModoEdicao()">
+                <i class="glyphicon glyphicon-floppy-remove"></i>
+            </button>
+            <button class="btn btn-success"
+                    ng-click="editar()">
+                <i class="glyphicon glyphicon-floppy-save"></i>
+            </button>
+            <img ng-show="apagandoFlag" src="/static/img/ajax.gif">
+        </div>
+
         <button class="btn btn-danger" ng-disabled="apagandoFlag"
                 ng-click="deletar()">
             <i class="glyphicon glyphicon-trash"></i>
         </button>
         <img ng-show="apagandoFlag" src="/static/img/ajax.gif">
+
     </td>
 </tr>
